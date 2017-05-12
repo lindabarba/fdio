@@ -1,0 +1,12 @@
+    <form class="col s12" <form action="/favorites<%= foodItem ? '/' + foodItem.id + '?_method=PUT' : '' %>" method="POST">
+      <div class="row">
+        <div class="input-field col s6">
+          <input name="name" placeholder="Name of Food Truck">
+        </div>
+        <div class="input-field col s6">
+          <input name="address" placeholder="Address of Food Truck">
+        </div>
+      </div>
+    <input class="btn waves-effect waves-light" type="submit" value="Submit">
+    </form>
+

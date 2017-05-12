@@ -4,6 +4,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+
+require('./config/database.js');
 
 const foodtruck = require('./routes/foodtruck');
 
@@ -16,6 +19,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

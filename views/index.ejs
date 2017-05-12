@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include ./partials/_head %>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% include ./partials/_nav %>
+    <div class="container">
+      <% foods.forEach(function(elem, index) { %>
+      <div class="row">
+        <div class="col m4 s12">
+          <div class="card">
+            <div class="card-title">
+              <%= elem["name"] %>
+            </div>
+            <div class="card-content">
+              <%= elem["address"] %>
+              <a href="/favorites/<%= elem["_id"] %>/edit">Edit</a>
+              <form action="/favorites/<%= elem["_id"] %>?_method=DELETE" method="POST">
+                <button class="waves-effect waves-teal btn-flat" type="submit">DELETE</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </body>
 </html>
+
+
